@@ -1,4 +1,5 @@
 import React from 'react';
+import Component from '../wrapper/Component';
 import * as firebase from 'firebase/app';
 import 'firebase/auth';
 import 'firebase/storage';
@@ -9,7 +10,7 @@ import Home from './firebase/Home';
 
 const core = firebase.initializeApp(config);
 
-class Firebase extends React.Component {
+class Firebase extends Component {
   constructor(props) {
     super(props);
     this.state = {user: 0};
@@ -17,14 +18,14 @@ class Firebase extends React.Component {
 
   componentDidMount() {
     core.auth().onAuthStateChanged(user => {
-      this.setState({user: user});
+      this.delayedSetState({user: user});
     });
   }
 
   render() {
-    const user = this.state.user;
-    if (user) return <Home firebase={core}/>;
+    const {user} = this.state;
     if (user === 0) return <Loading/>;
+    if (user) return <Home firebase={core}/>;
     return <SignIn firebase={core}/>;
   }
 }

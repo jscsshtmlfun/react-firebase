@@ -1,8 +1,10 @@
 import React from 'react';
+import './SignIn.css';
+import Component from '../../wrapper/Component';
 import Loading from '../../common/Loading';
 import ViewSource from '../../common/ViewSource';
 
-class SignIn extends React.Component {
+class SignIn extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -21,7 +23,7 @@ class SignIn extends React.Component {
   catchError(error) {
     alert(error.message);
     console.log(error);
-    this.setState({loading: false});
+    this.delayedSetState({loading: false});
   }
 
   firebaseAction(e, type) {
@@ -35,7 +37,7 @@ class SignIn extends React.Component {
       case 'password-reset':
         action = auth.sendPasswordResetEmail(email).then(() => {
           alert('Password reset email sent!');
-          this.setState({loading: false});
+          this.delayedSetState({loading: false});
         });
         break;
       case 'sign-up':
@@ -75,29 +77,38 @@ class SignIn extends React.Component {
   render() {
     if (this.state.loading) return <Loading/>;
     return (
-      <form onSubmit={this.handleSubmit}>
-        <input
-          value={this.state.email}
-          onChange={this.handleEmailChange}
-          type="email"
-          placeholder="email"
-          autoFocus
-          required
-        />
-        <input
-          value={this.state.password}
-          onChange={this.handlePasswordChange}
-          type="password"
-          placeholder="password"
-          required
-        />
-        <button onClick={this.handleSignIn}>Sign In</button>
-        <button onClick={this.handleSignUp}>Sign Up</button>
-        <button onClick={this.handleResetPassword}>Reset Password</button>
-        <br/>
-        <br/>
-        <ViewSource/>
-      </form>
+      <div className="SignIn text-center">
+        <form onSubmit={this.handleSubmit}>
+          <input
+            value={this.state.email}
+            onChange={this.handleEmailChange}
+            type="email"
+            placeholder="email"
+            autoFocus
+            required
+          />
+          <br/>
+          <input
+            value={this.state.password}
+            onChange={this.handlePasswordChange}
+            type="password"
+            placeholder="password"
+            required
+          />
+          <br/>
+          <br/>
+          <button onClick={this.handleSignIn}>Sign In</button>
+          <br/>
+          <br/>
+          <button onClick={this.handleSignUp}>Sign Up</button>
+          &nbsp;
+          <button onClick={this.handleResetPassword}>Reset Password</button>
+          <br/>
+          <br/>
+          <br/>
+          <ViewSource/>
+        </form>
+      </div>
     );
   }
 }

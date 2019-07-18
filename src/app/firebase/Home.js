@@ -106,7 +106,21 @@ class Home extends React.Component {
         break;
       default:
         view = (
-          <h1>Home</h1>
+          <h1 className="text-center">Hi! {this.state.name}</h1>
+        );
+        if (
+          this.props.firebase.auth().currentUser.uid
+          === 'K4zjNqgyDiVtpzPYUMG7IpowDGE3'
+        ) view = (
+          <div className="text-center">
+            <p className="Home-dummy text-center">
+              Hi! You're using a dummy user,
+              <a href="#/">
+                <b>create a new user</b>
+              </a>
+              to experience your own records...
+            </p>
+          </div>
         );
     }
     return (

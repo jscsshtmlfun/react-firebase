@@ -1,3 +1,14 @@
 .Home header {
   border-bottom: 1px solid black;
 }
+.Home .Home-dummy {
+  display: inline-block;
+  border: 1px solid black;
+  padding: 32px;
+  font-size: 1.1em;
+}
+.Home .Home-dummy a {
+  display: block;
+  padding: 16px;
+  font-size: 1.5em;
+}
