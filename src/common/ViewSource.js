@@ -8,6 +8,29 @@ class ViewSource extends React.Component {
     this.handleViewSource = this.handleViewSource.bind(this);
   }
 
+  change(source, regex) {
+    let URL = window.location.origin;
+    let matches;
+    while ((matches = regex.exec(source)) !== null) {
+      let replace = matches[0];
+      let value = matches[1] + matches[2];
+      replace = replace.replace(value, URL + value);
+      console.log("replacing:", matches[0], "=to=", replace);
+      source = source.replace(matches[0], replace);
+    }
+    return source;
+  }
+
+  updateLinks(source) {
+    let regex = /href="(\/)([^"]+)"/;
+    source = this.change(source, regex);
+    regex = /src="(\/)([^"]+)"/;
+    source = this.change(source, regex);
+    regex = /f.p="(\/)([^"]+)"/;
+    source = this.change(source, regex);
+    return source;
+  }
+
   handleViewSource(e) {
     if (this.state.button === "Hide Source") {
       const el = document.getElementsByClassName("ViewSource")[0];
@@ -23,6 +46,7 @@ class ViewSource extends React.Component {
     code.rows = 16;
     source += document.getElementsByTagName('html')[0].innerHTML;
     source += "</html>";
+    source = this.updateLinks(source);
     source = source.replace(/</g, "&lt;").replace(/>/g, "&gt;");
     code.innerHTML = source;
     parent.insertBefore(code, button);
