@@ -1,5 +1,6 @@
 import React from 'react';
 import Loading from '../../common/Loading';
+import ViewSource from '../../common/ViewSource';
 
 class SignIn extends React.Component {
   constructor(props) {
@@ -93,6 +94,9 @@ class SignIn extends React.Component {
         <button onClick={this.handleSignIn}>Sign In</button>
         <button onClick={this.handleSignUp}>Sign Up</button>
         <button onClick={this.handleResetPassword}>Reset Password</button>
+        <br/>
+        <br/>
+        <ViewSource/>
       </form>
     );
   }

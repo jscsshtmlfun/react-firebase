@@ -32,6 +32,7 @@ class ViewSource extends React.Component {
   }
 
   handleViewSource(e) {
+    e.preventDefault();
     if (this.state.button === "Hide Source") {
       const el = document.getElementsByClassName("ViewSource")[0];
       el.remove();
