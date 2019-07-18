@@ -1,4 +1,5 @@
 import React from 'react';
+import './Header.css';
 
 class Header extends React.Component {
   constructor(props) {
@@ -12,8 +13,13 @@ class Header extends React.Component {
 
   render() {
     return (
-      <header className="text-right">
+      <header className="Header text-right">
         <a href="#/" onClick={this.props.changePageUser}>
+          <img
+            src={this.props.photo}
+            className="Header-photo"
+            alt="user"
+          />
           {this.props.name}
         </a>
         &nbsp;

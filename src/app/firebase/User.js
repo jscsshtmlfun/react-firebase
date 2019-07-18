@@ -1,39 +1,17 @@
 import React from 'react';
 import './User.css';
-import defaultPhoto from './user.svg';
 import Loading from '../../common/Loading';
 
 class User extends React.Component {
   constructor(props) {
     super(props);
-    const user = this.props.firebase.auth().currentUser;
     this.state = {
-      name: user.displayName || user.email,
-      photoURL: defaultPhoto,
+      name: this.props.name,
+      photo: this.props.photo,
       loading: false,
     };
     this.handleChangeName = this.handleChangeName.bind(this);
     this.handleUpdateName = this.handleUpdateName.bind(this);
-    this.photo();
-  }
-
-  photo(file) {
-    const core = this.props.firebase;
-    const user = core.auth().currentUser;
-    const path = 'user_profile_photos/' + user.uid;
-    const ref = core.storage().ref().child(path);
-    if (file) {
-      ref.put(file).then(snapshot => {
-        this.photo();
-      });
-      return;
-    }
-    ref.getDownloadURL().then(url => {
-      this.setState({photoURL: url});
-    }).catch(error => {
-      alert(error.message);
-      console.log(error);
-    });
   }
 
   handleUpdateName(e) {
@@ -60,11 +38,11 @@ class User extends React.Component {
     return (
       <div className="User text-center">
         <h1>{this.state.name}</h1>
-        <input type="file" accept="image/*"/>
-        <button>Upload</button>
+        <input type="file" accept="image/*" ref={this.props.refInputPhoto}/>
+        <button onClick={this.props.handleUploadPhoto}>Upload</button>
         <br/>
         <img
-          src={this.state.photoURL}
+          src={this.state.photo}
           className="User-photo"
           alt="user"
         />

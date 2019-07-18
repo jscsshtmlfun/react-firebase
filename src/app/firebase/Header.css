@@ -1,0 +1,12 @@
+.Header {
+  padding-top: 32px;
+}
+
+.Header .Header-photo {
+  position: relative;
+  top: 2px;
+  width: 16px;
+  height: 16px;
+  border: 1px solid black;
+  border-radius: 50%;
+}
