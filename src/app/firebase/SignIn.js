@@ -5,13 +5,15 @@ class SignIn extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      email: '',
-      password: '',
+      email: 'dummy@us.er',
+      password: 'fR58fT}F@)Mc*E"S',
       loading: false,
     };
     this.handleEmailChange = this.handleEmailChange.bind(this);
     this.handlePasswordChange = this.handlePasswordChange.bind(this);
     this.handleSignIn = this.handleSignIn.bind(this);
+    this.handleSignUp = this.handleSignUp.bind(this);
+    this.handleResetPassword = this.handleResetPassword.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
   }
 
@@ -24,20 +26,37 @@ class SignIn extends React.Component {
   firebaseAction(e, type) {
     e.preventDefault();
     if (this.state.loading) return;
-    const core = this.props.firebase;
+    const auth = this.props.firebase.auth();
     const email = this.state.email;
     const password = this.state.password;
     let action;
     switch (type) {
+      case 'password-reset':
+        action = auth.sendPasswordResetEmail(email).then(() => {
+          alert('Password reset email sent!');
+          this.setState({loading: false});
+        });
+        break;
+      case 'sign-up':
+        action = auth.createUserWithEmailAndPassword(email, password);
+        break;
       default:
-        action = core.auth().signInWithEmailAndPassword(email, password);
+        action = auth.signInWithEmailAndPassword(email, password);
     }
     action.catch(error => {this.catchError(error)});
     this.setState({loading: true});
   }
 
+  handleResetPassword(e) {
+    this.firebaseAction(e, 'password-reset');
+  }
+
   handleSubmit(e) {
     this.firebaseAction(e);
+  }
+
+  handleSignUp(e) {
+    this.firebaseAction(e, 'sign-up');
   }
 
   handleSignIn(e) {

@@ -1,6 +1,7 @@
 import React from 'react';
 import * as firebase from 'firebase/app';
 import 'firebase/auth';
+import 'firebase/storage';
 import config from './firebase/config';
 import Loading from '../common/Loading';
 import SignIn from './firebase/SignIn';

@@ -1,0 +1,10 @@
+.User .User-photo {
+  width: 128px;
+  height: 128px;
+  border: 1px solid black;
+  border-radius: 50%;
+}
+
+.User input {
+  text-align: center;
+}
