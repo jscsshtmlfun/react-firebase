@@ -9,20 +9,25 @@ class Home extends React.Component {
   constructor(props) {
     super(props);
     const user = this.props.firebase.auth().currentUser;
-    this.state = {
-      name: user.displayName || user.email,
-      photo: defaultPhoto,
-      page: null,
-      loading: false,
-    };
-
+    this.handleNewUser = this.handleNewUser.bind(this);
     this.handleSignOut = this.handleSignOut.bind(this);
     this.changePageUser = this.changePageUser.bind(this);
     this.changePageHome = this.changePageHome.bind(this);
     this.setNameState = this.setNameState.bind(this);
     this.handleUploadPhoto = this.handleUploadPhoto.bind(this);
     this.refInputPhoto = React.createRef();
+    this.state = {
+      name: user.displayName || user.email,
+      photo: defaultPhoto,
+      page: null,
+      loading: false,
+    };
     this.photo();
+  }
+
+  handleNewUser(e) {
+    e.preventDefault();
+    this.handleSignOut(e);
   }
 
   handleUploadPhoto(e) {
@@ -59,7 +64,7 @@ class Home extends React.Component {
     this.setState({name: name});
   }
 
-  handleSignOut() {
+  handleSignOut(e) {
     if (this.state.loading) return;
     this.props.firebase.auth().signOut();
     this.setState({loading: true});
@@ -114,11 +119,11 @@ class Home extends React.Component {
         ) view = (
           <div className="text-center">
             <p className="Home-dummy text-center">
-              Hi! You're using a dummy user,
-              <a href="#/">
+              Hi! You're using a dummy,
+              <a href="#/create-user" onClick={this.handleNewUser}>
                 <b>create a new user</b>
               </a>
-              to experience your own records...
+              to experience your own records.
             </p>
           </div>
         );

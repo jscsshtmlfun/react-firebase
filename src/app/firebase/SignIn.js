@@ -8,8 +8,8 @@ class SignIn extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      email: 'dummy@us.er',
-      password: 'fR58fT}F@)Mc*E"S',
+      email: '',
+      password: '',
       loading: false,
     };
     this.handleEmailChange = this.handleEmailChange.bind(this);

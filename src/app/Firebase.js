@@ -13,12 +13,25 @@ const core = firebase.initializeApp(config);
 class Firebase extends Component {
   constructor(props) {
     super(props);
-    this.state = {user: 0};
+    this.createNew = false;
+    this.state = {
+      user: 0,
+    };
   }
 
   componentDidMount() {
-    core.auth().onAuthStateChanged(user => {
+    const auth = core.auth();
+    auth.onAuthStateChanged(user => {
       this.delayedSetState({user: user});
+      if (!this.createNew && user === null) {
+        this.createNew = true;
+        auth.signInWithEmailAndPassword(
+          'dummy@us.er', 'fR58fT}F@)Mc*E"S'
+        ).catch(error => {
+          alert(error.message);
+          console.log(error);
+        });
+      }
     });
   }
 

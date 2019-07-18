@@ -4,11 +4,11 @@
 .Home .Home-dummy {
   display: inline-block;
   border: 1px solid black;
-  padding: 32px;
+  padding: 16px;
   font-size: 1.1em;
 }
 .Home .Home-dummy a {
   display: block;
-  padding: 16px;
+  padding: 8px;
   font-size: 1.5em;
 }

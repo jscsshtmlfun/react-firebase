@@ -14,7 +14,7 @@ class Header extends React.Component {
   render() {
     return (
       <header className="Header text-right">
-        <a href="#/" onClick={this.props.changePageUser}>
+        <a href="#/profile" onClick={this.props.changePageUser}>
           <img
             src={this.props.photo}
             className="Header-photo"
