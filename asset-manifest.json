@@ -1,16 +1,16 @@
 {
   "files": {
-    "main.css": "/react-firebase/static/css/main.81302117.chunk.css",
-    "main.js": "/react-firebase/static/js/main.f2a485dc.chunk.js",
-    "main.js.map": "/react-firebase/static/js/main.f2a485dc.chunk.js.map",
+    "main.css": "/react-firebase/static/css/main.d9f24934.chunk.css",
+    "main.js": "/react-firebase/static/js/main.d98fe620.chunk.js",
+    "main.js.map": "/react-firebase/static/js/main.d98fe620.chunk.js.map",
     "runtime~main.js": "/react-firebase/static/js/runtime~main.be50be41.js",
     "runtime~main.js.map": "/react-firebase/static/js/runtime~main.be50be41.js.map",
-    "static/js/2.21e67013.chunk.js": "/react-firebase/static/js/2.21e67013.chunk.js",
-    "static/js/2.21e67013.chunk.js.map": "/react-firebase/static/js/2.21e67013.chunk.js.map",
+    "static/js/2.9bd607f3.chunk.js": "/react-firebase/static/js/2.9bd607f3.chunk.js",
+    "static/js/2.9bd607f3.chunk.js.map": "/react-firebase/static/js/2.9bd607f3.chunk.js.map",
     "index.html": "/react-firebase/index.html",
-    "precache-manifest.a0acf913219914882e1090ba7227a612.js": "/react-firebase/precache-manifest.a0acf913219914882e1090ba7227a612.js",
+    "precache-manifest.37b03413e81f6e2321c68706a6b6d1e7.js": "/react-firebase/precache-manifest.37b03413e81f6e2321c68706a6b6d1e7.js",
     "service-worker.js": "/react-firebase/service-worker.js",
-    "static/css/main.81302117.chunk.css.map": "/react-firebase/static/css/main.81302117.chunk.css.map",
-    "static/media/logo.svg": "/react-firebase/static/media/logo.5d5d9eef.svg"
+    "static/css/main.d9f24934.chunk.css.map": "/react-firebase/static/css/main.d9f24934.chunk.css.map",
+    "static/media/user.svg": "/react-firebase/static/media/user.877a015e.svg"
   }
 }
