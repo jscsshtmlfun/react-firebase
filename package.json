@@ -4,6 +4,7 @@
   "private": true,
   "homepage": "https://jscsshtmlfun.github.io/react-firebase",
   "dependencies": {
+    "firebase": "^6.3.0",
     "gh-pages": "^2.0.1",
     "react": "^16.8.6",
     "react-dom": "^16.8.6",
